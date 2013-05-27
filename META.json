@@ -59,5 +59,16 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/riywo/Net-AnimeNewsNetwork-Encyclopedia/issues"
+      },
+      "homepage" : "https://github.com/riywo/Net-AnimeNewsNetwork-Encyclopedia",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/riywo/Net-AnimeNewsNetwork-Encyclopedia.git",
+         "web" : "https://github.com/riywo/Net-AnimeNewsNetwork-Encyclopedia"
+      }
+   },
    "version" : "0.01"
 }
