@@ -1,11 +1,34 @@
 package Net::AnimeNewsNetwork::Encyclopedia;
-use 5.008005;
+use 5.10.0;
 use strict;
 use warnings;
+use Moo;
+use Data::Validator;
+use URI;
+use LWP::Simple;
 
 our $VERSION = "0.01";
+our $URL = 'http://cdn.animenewsnetwork.com/encyclopedia';
 
+has url => (
+    is      => 'ro',
+    default => $URL,
+);
 
+sub get_reports {
+    state $rule = Data::Validator->new(
+        id    => 'Int',
+        type  => 'Str',
+        nskip => { isa => 'Int', optional => 1 },
+        nlist => { isa => 'Int', optional => 1 },
+        name  => { isa => 'Str', optional => 1 },
+    )->with('Method');
+    my ($self, $args) = $rule->validate(@_);
+
+    my $uri = URI->new($self->url."/reports.xml");
+    $uri->query_form($args);
+    return get($uri);
+}
 
 1;
 __END__

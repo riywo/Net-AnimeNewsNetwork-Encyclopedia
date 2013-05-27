@@ -42,14 +42,20 @@
       },
       "runtime" : {
          "requires" : {
+            "Data::Validator" : "0",
             "LWP::Simple" : "0",
+            "Moo" : "0",
             "XML::Simple" : "0",
-            "perl" : "5.008005"
+            "perl" : "v5.10.0"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Path::Tiny" : "0",
+            "Test::Fake::HTTPD" : "0",
+            "Test::Mock::LWP::Conditional" : "0",
+            "Test::More" : "0.98",
+            "Text::QueryString" : "0"
          }
       }
    },
