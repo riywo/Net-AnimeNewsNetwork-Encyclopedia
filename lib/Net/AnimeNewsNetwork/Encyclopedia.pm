@@ -30,6 +30,19 @@ sub get_reports {
     return get($uri);
 }
 
+sub get_details {
+    state $rule = Data::Validator->new(
+        anime    => { isa => 'Int', xor => [qw/manga title/] },
+        manga    => { isa => 'Int', xor => [qw/anime title/] },
+        title    => { isa => 'Int', xor => [qw/anime manga/] },
+    )->with('Method');
+    my ($self, $args) = $rule->validate(@_);
+
+    my $uri = URI->new($self->url."/api.xml");
+    $uri->query_form($args);
+    return get($uri);
+}
+
 1;
 __END__
 
