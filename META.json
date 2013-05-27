@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "Client library of the AnimeNewsNetwork Encyclopedia API",
    "author" : [
       "Ryosuke IWANAGA <riywo.jp@gmail.com>"
    ],
@@ -53,9 +53,8 @@
          "requires" : {
             "Path::Tiny" : "0",
             "Test::Fake::HTTPD" : "0",
-            "Test::Mock::LWP::Conditional" : "0",
             "Test::More" : "0.98",
-            "Text::QueryString" : "0"
+            "Try::Tiny" : "0"
          }
       }
    },
