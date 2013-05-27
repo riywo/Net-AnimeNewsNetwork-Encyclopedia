@@ -2,7 +2,6 @@ use strict;
 use Test::More;
 use Test::Fake::HTTPD;
 use Path::Tiny;
-use XML::Simple;
 use Try::Tiny;
 use Net::AnimeNewsNetwork::Encyclopedia;
 
@@ -22,23 +21,21 @@ my $httpd = run_http_server {
 my $ann = Net::AnimeNewsNetwork::Encyclopedia->new(url => $httpd->endpoint);
 
 subtest 'GET Reports API' => sub {
-  my $content = $ann->get_reports(id => 155, type => 'anime');
-  ok defined $content;
-  try   {
-    XMLin($content);
-    pass;
-  } catch {
-    fail;
-  }
+    try {
+        my $content = $ann->get_reports(id => 155, type => 'anime');
+        ok defined $content;
+    } catch {
+        fail;
+    };
 };
 
 subtest 'GET Details API' => sub {
-  my $content = $ann->get_details(anime => 4658);
-  ok defined $content;
-  try   {
-    XMLin($content);
-    pass;
-  } catch { fail; }
+    try {
+        my $content = $ann->get_details(anime => 4658);
+        ok defined $content;
+    } catch {
+        fail;
+    };
 };
 
 done_testing;

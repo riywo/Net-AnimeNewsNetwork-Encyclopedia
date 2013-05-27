@@ -6,6 +6,7 @@ use Moo;
 use Data::Validator;
 use URI;
 use LWP::Simple;
+use XML::Simple;
 
 our $VERSION = "0.01";
 our $URL = 'http://cdn.animenewsnetwork.com/encyclopedia';
@@ -25,9 +26,8 @@ sub get_reports {
     )->with('Method');
     my ($self, $args) = $rule->validate(@_);
 
-    my $uri = URI->new($self->url."/reports.xml");
-    $uri->query_form($args);
-    return get($uri);
+    my $content = $self->_get("/reports.xml", $args);
+    return XMLin($content);
 }
 
 sub get_details {
@@ -38,8 +38,14 @@ sub get_details {
     )->with('Method');
     my ($self, $args) = $rule->validate(@_);
 
-    my $uri = URI->new($self->url."/api.xml");
-    $uri->query_form($args);
+    my $content = $self->_get("/api.xml", $args);
+    return XMLin($content);
+}
+
+sub _get {
+    my ($self, $path, $query) = @_;
+    my $uri = URI->new($self->url . $path);
+    $uri->query_form($query);
     return get($uri);
 }
 
