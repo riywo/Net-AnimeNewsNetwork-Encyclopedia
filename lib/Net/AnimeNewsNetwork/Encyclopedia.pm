@@ -8,7 +8,7 @@ use URI;
 use LWP::Simple;
 use XML::Simple;
 
-our $VERSION = "0.01";
+our $VERSION = "0.02";
 our $URL = 'http://cdn.animenewsnetwork.com/encyclopedia';
 
 has url => (
