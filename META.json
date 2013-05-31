@@ -42,10 +42,10 @@
       },
       "runtime" : {
          "requires" : {
-            "Data::Validator" : "0",
+            "Data::Validator" : "1.02",
             "LWP::Simple" : "0",
-            "Moo" : "0",
-            "XML::Simple" : "0",
+            "Moo" : "1.002",
+            "XML::Simple" : "2.20",
             "perl" : "v5.10.0"
          }
       },

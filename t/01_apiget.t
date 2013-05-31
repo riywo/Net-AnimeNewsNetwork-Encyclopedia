@@ -25,7 +25,7 @@ subtest 'GET Reports API' => sub {
         my $content = $ann->get_reports(id => 155, type => 'anime');
         ok defined $content;
     } catch {
-        fail;
+        fail $_;
     };
 };
 
@@ -34,7 +34,7 @@ subtest 'GET Details API' => sub {
         my $content = $ann->get_details(anime => 4658);
         ok defined $content;
     } catch {
-        fail;
+        fail $_;
     };
 };
 
